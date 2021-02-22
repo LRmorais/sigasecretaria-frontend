@@ -7,33 +7,36 @@ import logoImg from '../../assets/logo.svg';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-import { Container, Content } from './styles';
+import { Container, Content, AnimationContainer, DivLogo } from './styles';
 
 const Signin: React.FC = () => (
   <Container>
     <Content>
-      <img src={logoImg} alt="SigaSecretaria" />
+      <AnimationContainer>
+        <DivLogo>
+          <img src={logoImg} alt="SigaSecretaria" />
+        </DivLogo>
+        <Form onSubmit={() => alert('Aplicação em Desenvolvimento')}>
+          <h1>Entre com suas credenciais</h1>
 
-      <Form onSubmit={() => console.log('ok')}>
-        <h1>Entre com suas credenciais</h1>
+          <Input name="email" icon={FiMail} placeholder="E-mail" />
 
-        <Input name="email" icon={FiMail} placeholder="E-mail" />
+          <Input
+            name="password"
+            icon={FiLock}
+            type="password"
+            placeholder="Senha"
+          />
 
-        <Input
-          name="password"
-          icon={FiLock}
-          type="password"
-          placeholder="Senha"
-        />
+          <Button type="submit">Entrar</Button>
 
-        <Button type="submit">Entrar</Button>
-
-        <a href="#forgot">Esqueci minha senha</a>
-      </Form>
-      <a href="#create">
-        <FiLogIn />
-        Criar Conta
-      </a>
+          <a href="#forgot">Esqueci minha senha</a>
+        </Form>
+        <a href="#create">
+          <FiLogIn />
+          Criar Conta
+        </a>
+      </AnimationContainer>
     </Content>
   </Container>
 );
