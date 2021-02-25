@@ -7,9 +7,10 @@ import React, {
 } from 'react';
 // contem todas as propriedades que um icone pode ter
 import { IconBaseProps } from 'react-icons';
+import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
-import { Container } from './styles';
+import { Container, Error } from './styles';
 
 // input recebe todas as propriedades do Input html + declarados na interface
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -47,7 +48,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   }, []);
 
   return (
-    <Container isFilled={isFielled} isFocused={isFocused}>
+    <Container isErrored={!!error} isFilled={isFielled} isFocused={isFocused}>
       {Icon && <Icon size={20} />}
       <input
         defaultValue={defaultValue}
@@ -56,6 +57,11 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
       />
+      {error && (
+        <Error title={error}>
+          <FiAlertCircle color="#c53030" size={20} />
+        </Error>
+      )}
     </Container>
   );
 };
